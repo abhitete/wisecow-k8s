@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main   # trigger on every push to main branch
+      - main   # Trigger on pushes to the main branch
 
 jobs:
   build-and-push:
@@ -24,21 +24,3 @@ jobs:
       with:
         push: true
         tags: abhitete/wisecow:latest
-
-  # Optional: Auto deploy to Kubernetes (Challenge Goal)
-  deploy:
-    needs: build-and-push
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Set up kubectl
-      uses: azure/setup-kubectl@v3
-      with:
-        version: 'latest'
-
-    - name: Apply Kubernetes manifests
-      run: |
-        kubectl apply -f k8s/deployment.yaml
-        kubectl apply -f k8s/service.yaml
-      env:
-        KUBECONFIG: ${{ secrets.KUBECONFIG }}
