@@ -34,8 +34,9 @@ prerequisites() {
 }
 
 main() {
-	prerequisites
-	echo "Wisdom served on port=$SRVPORT..."
+	echo "🚀 Wisecow App Updated via CI/CD!"
+        prerequisites
+        echo "Wisdom served on port=$SRVPORT..."
 
 	while [ 1 ]; do
 		cat $RSPFILE | nc -lN $SRVPORT | handleRequest
