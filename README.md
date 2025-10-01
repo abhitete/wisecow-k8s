@@ -4,7 +4,7 @@
 
 This project demonstrates the **containerization, deployment, CI/CD automation, and TLS security** of the Wisecow application.
 
-We took a simple Bash-based app and:
+We took a simple  -bash based app and:
 
 - 🐳 Containerized it with Docker  
 - ☸️ Deployed it to Kubernetes  
@@ -19,7 +19,7 @@ We took a simple Bash-based app and:
 
 - Created a `Dockerfile` to package Wisecow app.  
 - Tested with:  
-  ```bash
+  ``` 
   docker run -p 4499:4499 wisecow-app
 <h3>2. Kubernetes Deployment</h3>
 deployment.yaml → Runs the Wisecow app as Pods.
@@ -45,40 +45,40 @@ Created a Kubernetes TLS secret.
 Configured ingress.yaml for HTTPS at → https://wisecow.local.
 
 <h2>🛠️ Setup Instructions</h2> <h3>1. Clone Repository</h3>
-bash
-Copy code
+ 
+  
 git clone https://github.com/abhitete/wisecow-k8s.git
 cd wisecow-k8s
 <h3>2. Docker (Optional Local Run)</h3>
-bash
-Copy code
+ 
+  
 docker build -t wisecow-app .
 docker run -p 4499:4499 wisecow-app
 👉 Open → http://localhost:4499
 
 <h3>3. Kubernetes Deployment</h3>
-bash
-Copy code
+ 
+  
 kubectl apply -f k8s/deployment.yaml
 kubectl apply -f k8s/service.yaml
 Check pods & service:
 
-bash
-Copy code
+ 
+  
 kubectl get pods
 kubectl get svc
 Access locally:
 
-bash
-Copy code
+ 
+  
 kubectl port-forward svc/wisecow-service 4499:80
 👉 Then open → http://localhost:4499
 
 <h3>4. TLS + Ingress</h3>
 Generate TLS cert (self-signed):
 
-bash
-Copy code
+ 
+  
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
   -out tls.crt -keyout tls.key \
   -subj "/CN=wisecow.local/O=wisecow"
@@ -86,13 +86,13 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 kubectl create secret tls wisecow-tls --cert=tls.crt --key=tls.key
 Apply Ingress:
 
-bash
-Copy code
+ 
+  
 kubectl apply -f k8s/ingress.yaml
 Update hosts file (C:\Windows\System32\drivers\etc\hosts):
 
 lua
-Copy code
+  
 127.0.0.1 wisecow.local
 👉 Access app securely → https://wisecow.local
 
@@ -106,8 +106,8 @@ Builds and pushes Docker image → Docker Hub.
 (Optional) Can be extended to deploy automatically to Kubernetes.
 
 <h2>📂 Repository Structure</h2>
-bash
-Copy code
+ 
+  
 
 ```
 wisecow-k8s/
@@ -132,4 +132,4 @@ wisecow-k8s/
 
 
 yaml
-Copy code
+  
