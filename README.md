@@ -103,8 +103,6 @@ Runs on every push to main.
 
 Builds and pushes Docker image → Docker Hub.
 
-(Optional) Can be extended to deploy automatically to Kubernetes.
-
 <h2>📂 Repository Structure</h2>
  
   
@@ -129,7 +127,4 @@ wisecow-k8s/
 ✅ Deployed on Kubernetes
 ✅ Automated CI/CD pipeline
 ✅ Secured with TLS over HTTPS
-
-
-yaml
-  
+ 
